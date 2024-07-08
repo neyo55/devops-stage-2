@@ -1,39 +1,28 @@
-# Use an official Python runtime as the base image
-FROM python:3.10-slim
+# Use the latest official Python image as a base
+FROM python:latest
 
-# Set the working directory in the container
-WORKDIR /app
+# Install Node.js and npm
+RUN apt-get update && apt-get install -y \
+    nodejs \
+    npm
 
-# Install poetry
+# Install Poetry using pip
 RUN pip install poetry
 
-# Copy pyproject.toml and poetry.lock
-COPY pyproject.toml poetry.lock ./
+# Set the working directory
+WORKDIR /app
 
-# Install dependencies
-RUN poetry config virtualenvs.create false \
-  && poetry install --no-interaction --no-ansi
-
-# Copy the rest of the application code to the working directory
+# Copy the application files
 COPY . .
 
-# Expose the port that the application will run on
+# Install dependencies using Poetry
+RUN poetry install
+
+# Expose the port FastAPI runs on
 EXPOSE 8000
 
-# Command to run the application
-CMD ["python", "main.py"]
-
-
-
-
-
-
-
-
-
-
-
-
+# Run the prestart script and start the server
+CMD ["sh", "-c", "poetry run bash ./prestart.sh && poetry run uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"]
 
 
 

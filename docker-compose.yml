@@ -1,62 +1,64 @@
-version: '3'
+version: '3.8'
 
 services:
-  frontend:
-    build: ./frontend
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=PathPrefix(`/`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
-
   backend:
-    build: ./backend
-    environment:
-      - DATABASE_URL=postgresql://postgres:app004321@db:5432/postgres_db
-      - PROJECT_NAME=${PROJECT_NAME}
-      - POSTGRES_SERVER=db
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - FIRST_SUPERUSER=${FIRST_SUPERUSER}
-      - FIRST_SUPERUSER_PASSWORD=${FIRST_SUPERUSER_PASSWORD}
+    build:
+      context: ./backend
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
     depends_on:
       - db
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=PathPrefix(`/api`) || PathPrefix(`/docs`)"
-      - "traefik.http.services.backend.loadbalancer.server.port=8000"
+    env_file:
+      - ./backend/.env
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: nodejs_app
+    ports:
+      - "5173:5173"
+    env_file:
+      - ./frontend/.env
 
   db:
-    image: postgres:13
-    environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=neyo_db
+    image: postgres:latest
+    container_name: postgres_db
+    ports:
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ./backend/.env
 
   adminer:
     image: adminer
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.adminer.rule=PathPrefix(`/adminer`)"
-      - "traefik.http.services.adminer.loadbalancer.server.port=8080"
+    container_name: adminer
+    ports:
+      - "8080:8080"
 
-  traefik:
-    image: traefik:v2.5
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
+  proxy:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx_proxy_manager
     ports:
       - "80:80"
-      - "8888:8888"
-      - "8889:8080"
+      - "443:443"
+      - "81:81"
+    environment:
+      DB_SQLITE_FILE: "/data/database.sqlite"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    depends_on:
+      - db
+      - backend
+      - frontend
+      - adminer
 
 volumes:
   postgres_data:
+  data:
+  letsencrypt:
 
 
 
