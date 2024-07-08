@@ -30,7 +30,7 @@ services:
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=postgres_db
+      - POSTGRES_DB=neyo_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -47,8 +47,9 @@ services:
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:8888"
+      - "--entrypoints.web.address=:80"
     ports:
+      - "80:80"
       - "8888:8888"
       - "8889:8080"
     volumes:
