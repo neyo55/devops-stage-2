@@ -3,3 +3,30 @@
 2024/07/09 13:07:06 [error] 177#177: *504 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:80/favicon.ico", host: "3.255.146.0", referrer: "http://3.255.146.0/"
 2024/07/09 22:38:49 [error] 181#181: *11 open() "/var/www/html/github.c" failed (2: No such file or directory), client: 34.223.114.248, server: localhost-nginx-proxy-manager, request: "GET //github.c HTTP/1.1", host: "3.249.153.176"
 2024/07/09 22:38:49 [error] 181#181: *12 open() "/var/www/html/maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.cs" failed (2: No such file or directory), client: 34.223.114.248, server: localhost-nginx-proxy-manager, request: "GET //maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.cs HTTP/1.1", host: "3.249.153.176"
+2024/07/09 22:58:35 [warn] 158#158: server name "localhost/docs" has suspicious symbols in /data/nginx/proxy_host/5.conf:20
+2024/07/09 22:59:08 [warn] 158#158: server name "localhost/docs" has suspicious symbols in /data/nginx/proxy_host/5.conf:20
+2024/07/09 22:59:08 [warn] 158#158: server name "localhost/redoc" has suspicious symbols in /data/nginx/proxy_host/6.conf:20
+2024/07/09 22:59:42 [warn] 158#158: server name "localhost/docs" has suspicious symbols in /data/nginx/proxy_host/5.conf:20
+2024/07/09 22:59:42 [warn] 158#158: server name "localhost/redoc" has suspicious symbols in /data/nginx/proxy_host/6.conf:20
+2024/07/09 22:59:42 [warn] 158#158: server name "localhost/api" has suspicious symbols in /data/nginx/proxy_host/7.conf:20
+2024/07/09 23:06:30 [warn] 158#158: server name "localhost/docs" has suspicious symbols in /data/nginx/proxy_host/5.conf:20
+2024/07/09 23:06:30 [warn] 158#158: server name "localhost/redoc" has suspicious symbols in /data/nginx/proxy_host/6.conf:20
+2024/07/09 23:06:30 [warn] 158#158: server name "localhost/api" has suspicious symbols in /data/nginx/proxy_host/7.conf:20
+2024/07/09 23:07:27 [warn] 158#158: server name "localhost/docs" has suspicious symbols in /data/nginx/proxy_host/5.conf:20
+2024/07/09 23:07:27 [warn] 158#158: server name "localhost/redoc" has suspicious symbols in /data/nginx/proxy_host/6.conf:20
+2024/07/09 23:07:27 [warn] 158#158: server name "localhost/api" has suspicious symbols in /data/nginx/proxy_host/7.conf:20
+2024/07/09 23:08:03 [warn] 158#158: server name "localhost/docs" has suspicious symbols in /data/nginx/proxy_host/5.conf:20
+2024/07/09 23:08:03 [warn] 158#158: server name "localhost/redoc" has suspicious symbols in /data/nginx/proxy_host/6.conf:20
+2024/07/09 23:08:03 [warn] 158#158: server name "localhost/api" has suspicious symbols in /data/nginx/proxy_host/7.conf:20
+2024/07/09 23:09:37 [warn] 158#158: server name "localhost/docs" has suspicious symbols in /data/nginx/proxy_host/5.conf:20
+2024/07/09 23:09:37 [warn] 158#158: server name "localhost/redoc" has suspicious symbols in /data/nginx/proxy_host/6.conf:20
+2024/07/09 23:09:37 [warn] 158#158: server name "localhost/api" has suspicious symbols in /data/nginx/proxy_host/7.conf:20
+2024/07/09 23:09:44 [warn] 158#158: server name "localhost/docs" has suspicious symbols in /data/nginx/proxy_host/5.conf:20
+2024/07/09 23:09:44 [warn] 158#158: server name "localhost/redoc" has suspicious symbols in /data/nginx/proxy_host/6.conf:20
+2024/07/09 23:09:44 [warn] 158#158: server name "localhost/api" has suspicious symbols in /data/nginx/proxy_host/7.conf:20
+2024/07/09 23:12:16 [warn] 158#158: server name "localhost/docs" has suspicious symbols in /data/nginx/proxy_host/5.conf:20
+2024/07/09 23:12:16 [warn] 158#158: server name "localhost/redoc" has suspicious symbols in /data/nginx/proxy_host/6.conf:20
+2024/07/09 23:12:16 [warn] 158#158: server name "localhost/api" has suspicious symbols in /data/nginx/proxy_host/7.conf:20
+2024/07/09 23:12:24 [warn] 158#158: server name "localhost/docs" has suspicious symbols in /data/nginx/proxy_host/5.conf:20
+2024/07/09 23:12:24 [warn] 158#158: server name "localhost/redoc" has suspicious symbols in /data/nginx/proxy_host/6.conf:20
+2024/07/09 23:12:24 [warn] 158#158: server name "localhost/api" has suspicious symbols in /data/nginx/proxy_host/7.conf:20
