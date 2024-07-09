@@ -26,10 +26,12 @@ services:
     container_name: postgres_db
     ports:
       - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    env_file:
-      - ./backend/.env
+    # volumes:
+    #   - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: neyo
+      POSTGRES_PASSWORD: app00321
+      POSTGRES_DB: neyo_db   
 
   adminer:
     image: adminer
@@ -37,16 +39,16 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - postgres
+      - db
 
-  postgres:
-    image: 'postgres:15'
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: neyo
-      POSTGRES_PASSWORD: app00321
-      POSTGRES_DB: neyo_db    
+  # postgres:
+  #   image: 'postgres:15'
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     POSTGRES_USER: neyo
+  #     POSTGRES_PASSWORD: app00321
+  #     POSTGRES_DB: neyo_db    
 
 
   proxy:
@@ -54,9 +56,9 @@ services:
     container_name: nginx_proxy_manager
     restart: unless-stopped
     ports:
-      - '8090:8090'
+      
       - '80:80'    # Public HTTP Port
-      - '81:81'    # Admin Web Port
+      - '8090:81'    # Admin Web Port
       - '443:443'  # Public HTTPS Port
     environment:
       DB_SQLITE_FILE: "/data/database.sqlite"
