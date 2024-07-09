@@ -42,12 +42,18 @@ services:
   proxy:
     image: jc21/nginx-proxy-manager:latest
     container_name: nginx_proxy_manager
+    restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
-      - "81:81"
+      - '80:80'    # Public HTTP Port
+      - '81:81'    # Admin Web Port
+      - '443:443'  # Public HTTPS Port
     environment:
       DB_SQLITE_FILE: "/data/database.sqlite"
+      DB_PGSQL_HOST: "db"
+      DB_PGSQL_PORT: 5432
+      DB_PGSQL_USER: "proxy_user"
+      DB_PGSQL_PASSWORD: "proxy00123"
+      DB_PGSQL_NAME: "proxy_db"
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
@@ -61,6 +67,7 @@ volumes:
   postgres_data:
   data:
   letsencrypt:
+
 
 
 
