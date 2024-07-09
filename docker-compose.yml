@@ -37,7 +37,17 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - db
+      - postgres
+
+  postgres:
+    image: 'postgres:15'
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: neyo
+      POSTGRES_PASSWORD: app00321
+      POSTGRES_DB: neyo_db    
+
 
   proxy:
     image: jc21/nginx-proxy-manager:latest
