@@ -44,6 +44,7 @@ services:
     container_name: nginx_proxy_manager
     restart: unless-stopped
     ports:
+      - '8090:8090'
       - '80:80'    # Public HTTP Port
       - '81:81'    # Admin Web Port
       - '443:443'  # Public HTTPS Port
