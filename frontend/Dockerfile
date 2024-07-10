@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the application files
 COPY . .
 
+# arg command
+ARG VITE_API_URL=${VITE_API_URL}
+
 # Install dependencies
 RUN npm install
 

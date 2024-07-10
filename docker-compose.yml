@@ -4,6 +4,8 @@ services:
   backend:
     build:
       context: ./backend
+      args:
+         - VITE_API_URL=http://localhost:8000
     container_name: fastapi_app
     ports:
       - "8000:8000"
