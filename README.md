@@ -14,15 +14,14 @@ This project demonstrates a full stack web application deployment using Docker c
     - [Step3: Configure frontend side of the application](#step3-configure-frontend-side-of-the-application)
     - [Step4: Dockerize the application](#step4-dockerize-the-application)
     - [Step 5: Domain setup](#step-5-domain-setup)
-      - [Step A: Log in to AWS Management Console](#step-a-log-in-to-aws-management-console)
-      - [Step B: Navigate to Route 53](#step-b-navigate-to-route-53)
-      - [Step C: Create a Hosted Zone](#step-c-create-a-hosted-zone)
-      - [Step D: Create an A Record](#step-d-create-an-a-record)
-      - [Step E: Create an Alias Record (Optional)](#step-e-create-an-alias-record-optional)
-      - [Step F: Verify Your Records](#step-f-verify-your-records)
+        - [Step A: Log in to AWS Management Console](#step-a-log-in-to-aws-management-console)
+        - [Step B: Navigate to Route 53](#step-b-navigate-to-route-53)
+        - [Step C: Create a Hosted Zone](#step-c-create-a-hosted-zone)
+        - [Step D: Create an A Record](#step-d-create-an-a-record)
+        - [Step E: Create an Alias Record (Optional)](#step-e-create-an-alias-record-optional)
+        - [Step F: Verify Your Records](#step-f-verify-your-records)
     - [Step 6](#step-6)
     - [Step 7](#step-7)
-    - [Step 8](#step-8)
     - [Conclusion](#conclusion)
 
 ## Project Structure
@@ -476,24 +475,24 @@ sudo docker-compose up -build
 
 Let me walk you through the step-by-step guide in creating hosted zone and A records in AWS
 
-#### Step A: Log in to AWS Management Console
+##### Step A: Log in to AWS Management Console
 
 - Go to the AWS website and sign in to your account using your email address and password.
 - Make sure you are in the correct region where you want to create your hosted zone.
 
-#### Step B: Navigate to Route 53
+##### Step B: Navigate to Route 53
 
 - Click on the "Services" dropdown menu at the top of the page and select "Route 53" under the "Networking & Connectivity" section.
 - Alternatively, you can type "Route 53" in the search bar and select the service from the results.
 
-#### Step C: Create a Hosted Zone
+##### Step C: Create a Hosted Zone
 
 - Click on the "Create a hosted zone" button.
 - Enter the domain name you want to create a hosted zone for (e.g., (link unavailable)).
 - Select the type of hosted zone you want to create (e.g., public hosted zone).
 - Click "Create hosted zone".
 
-#### Step D: Create an A Record
+##### Step D: Create an A Record
 
 - In the hosted zone, click on the "Create record set" button.
 - Select "A" as the record type.
@@ -503,7 +502,7 @@ Let me walk you through the step-by-step guide in creating hosted zone and A rec
     - TTL (optional): The time to live for the record (e.g., 300 seconds).
 - Click "Create record set".
 
-#### Step E: Create an Alias Record (Optional)
+##### Step E: Create an Alias Record (Optional)
 
 - If you want to point your domain to an AWS resource (e.g., an ELB or S3 bucket), you need to create an alias record.
 - Select "Alias" as the record type.
@@ -513,7 +512,7 @@ Let me walk you through the step-by-step guide in creating hosted zone and A rec
     - TTL (optional): The time to live for the record (e.g., 300 seconds).
 - Click "Create record set".
 
-#### Step F: Verify Your Records
+##### Step F: Verify Your Records
 
 - Go to the "Route 53" dashboard and select your hosted zone.
 - Click on the "Records" tab.
@@ -532,12 +531,6 @@ Remember we are required to route port 80 to both frontend and backend:
 - proxy.domain - Nginx proxy manager
 
 ### Step 6
-
-Routing domains using Nginx proxy manager
-We now have everything set up, we can run docker-compose up --build to build our application and up and running. We would need to install Docker and Docker-compose first.
-
-
-### Step 7
 Reverse Proxying and SSL setup with Nginx proxy manager
 Access the Proxy manager UI by entering http://<ip_address>:81 in your browser, Ensure that port is open in your security group or firewall.
 Login with the default Admin credentials
@@ -560,7 +553,7 @@ You don't need to do the advanced setup on the db and proxy domain
 
 
 
-### Step 8
+### Step 7
 
 Setup Adminer
 
